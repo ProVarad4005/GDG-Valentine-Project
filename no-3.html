@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <title>Accept My Proposal Pls</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(135deg, #FF0000 0%, #0000FF 100%);
+        }
+
+        .main {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 0;
+            border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: auto; /* Adjusted height */
+            text-align: center;
+            position: relative;
+        }
+
+        .img img {
+            height: 200px;
+        }
+
+        .txt {
+            padding: 20px;
+            font-weight: bolder;
+            color: white;
+        }
+
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .buttons a {
+            padding: 10px 20px;
+            margin: 5px;
+            font-weight: bolder;
+            border: 0;
+            border-radius: 20px;
+            text-decoration: none;
+            color: black;
+            background-color: white; /* Ensure the background is button-like */
+            display: inline-block;
+            text-align: center;
+        }
+
+        /* Specific button styling */
+        .buttons a:first-child:hover{
+            cursor: pointer;
+            background-color: lightgrey; /* Hover effect for buttons */
+            margin-right: 10px; /* Spacing between Yes and No buttons */
+        }
+
+        .buttons a:last-child {
+            transition: top 0.1s, left 0.1s;
+        }
+        #noButton{
+            user-select: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="img">
+            <img src="https://media.tenor.com/QLhuinUqt3gAAAAi/mutlu.gif" alt="">
+        </div>
+        <div class="txt">Ab Toh Haa Boldo Kitna Bhav Khaogi 😭</div>
+        <div class="buttons">
+            <a href="https://propose-machine-ladkibaaz.on.drv.tw/LadkiBaaz_Atharva/yes.html">Yes</a>
+            <a href="#" id="noButton">No</a>
+        </div>
+    </div>
+
+    <script>
+        function moveButton() {
+            const button = document.getElementById('noButton');
+            const buttonRect = button.getBoundingClientRect();
+            const maxX = window.innerWidth - buttonRect.width;
+            const maxY = window.innerHeight - buttonRect.height;
+
+            let randomX = Math.floor(Math.random() * maxX);
+            let randomY = Math.floor(Math.random() * maxY);
+
+            // Ensure the button stays within the bounds
+            randomX = Math.min(Math.max(randomX, 0), maxX);
+            randomY = Math.min(Math.max(randomY, 0), maxY);
+
+            button.style.position = 'fixed'; // Make it fixed only when moving
+            button.style.left = `${randomX}px`;
+            button.style.top = `${randomY}px`;
+        }
+
+        document.getElementById('noButton').addEventListener('mouseover', moveButton);
+    </script>
+</body>
+
+</html>
